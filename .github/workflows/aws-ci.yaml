@@ -8,13 +8,16 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-    env:
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      DEBUG: ${{ secrets.DEBUG }}
-      ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Generate .env file
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          envkey_DEBUG: ${{ secrets.DEBUG }}
+          envkey_ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
 
       - name: Build docker image
         run: docker build -t ys.pms:latest .
