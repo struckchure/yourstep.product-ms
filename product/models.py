@@ -1,8 +1,10 @@
 from django.core import validators
 from django.db import models
 
+from product_ms.utils import BaseModel
 
-class Product(models.Model):
+
+class Product(BaseModel):
     title = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -15,7 +17,7 @@ class Product(models.Model):
         )
 
 
-class Review(models.Model):
+class Review(BaseModel):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     description = models.TextField()
     grade = models.IntegerField(
