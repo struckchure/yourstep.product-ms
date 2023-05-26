@@ -32,7 +32,7 @@ This is a Django backend for a simple e-commerce platform. It provides APIs for 
 3. Create a virtual environment:
 
    ```shell
-   python3 -m venv env
+   python3 -m venv venv
    ```
 
 4. Activate the virtual environment:
@@ -40,13 +40,13 @@ This is a Django backend for a simple e-commerce platform. It provides APIs for 
    - On macOS and Linux:
 
      ```shell
-     source env/bin/activate
+     source venv/bin/activate
      ```
 
    - On Windows:
 
      ```shell
-     .\env\Scripts\activate
+     .\venv\Scripts\activate
      ```
 
 5. Install the dependencies:
