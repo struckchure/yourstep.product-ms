@@ -78,11 +78,17 @@ This is a Django backend for a simple e-commerce platform. It provides APIs for 
 - **URL:** `/product/`
 - **Method:** GET
 - **Description:** Retrieve a list of all products available in the platform.
-- **Response:** JSON array containing details of all products.
-  - `id` (integer): The unique identifier of the product.
-  - `title` (string): The title of the product.
-  - `description` (string): The description of the product.
-  - `price` (float): The price of the product.
+- **Response:** JSON object containing details of all products and pagination information.
+  - `count` (integer): The total number of products available.
+  - `next` (string): The next pagination link.
+  - `previous` (string): The previous pagination link.
+  - `results` (array): JSON object containing product details.
+    - `id` (uuid): The unique identifier of the product.
+    - `title` (string): The title of the product.
+    - `description` (string): The description of the product.
+    - `price` (float): The price of the product.
+    - `date_created` (string): The date the product was created
+    - `last_updated` (string): The date the product was last updated
 
 #### Product Details
 
@@ -90,10 +96,12 @@ This is a Django backend for a simple e-commerce platform. It provides APIs for 
 - **Method:** GET
 - **Description:** Retrieve detailed information about a specific product.
 - **Response:** JSON object containing the details of the product.
-  - `id` (integer): The unique identifier of the product.
+  - `id` (uuid): The unique identifier of the product.
   - `title` (string): The title of the product.
   - `description` (string): The description of the product.
   - `price` (float): The price of the product.
+  - `date_created` (string): The date the product was created
+  - `last_updated` (string): The date the product was last updated
 
 #### Create Product
 
@@ -105,10 +113,12 @@ This is a Django backend for a simple e-commerce platform. It provides APIs for 
   - `description` (string): The description of the product.
   - `price` (float): The price of the product.
 - **Response:** JSON object containing the details of the created product.
-  - `id` (integer): The unique identifier of the product.
+  - `id` (uuid): The unique identifier of the product.
   - `title` (string): The title of the product.
   - `description` (string): The description of the product.
   - `price` (float): The price of the product.
+  - `date_created` (string): The date the product was created
+  - `last_updated` (string): The date the product was last updated
 
 #### Update Product
 
@@ -120,10 +130,12 @@ This is a Django backend for a simple e-commerce platform. It provides APIs for 
   - `description` (string): The updated description of the product.
   - `price` (float): The updated price of the product.
 - **Response:** JSON object containing the updated details of the product.
-  - `id` (integer): The unique identifier of the product.
+  - `id` (uuid): The unique identifier of the product.
   - `title` (string): The updated title of the product.
   - `description` (string): The updated description of the product.
   - `price` (float): The updated price of the product.
+  - `date_created` (string): The date the product was created
+  - `last_updated` (string): The date the product was last updated
 
 #### Delete Product
 
@@ -139,10 +151,16 @@ This is a Django backend for a simple e-commerce platform. It provides APIs for 
 - **URL:** `/product/{product_id}/review/`
 - **Method:** GET
 - **Description:** Retrieve a list of reviews for a specific product.
-- **Response:** JSON array containing details of all reviews for the product.
-  - `id` (integer): The unique identifier of the review.
-  - `description` (string): The description of the review.
-  - `grade` (integer): The rating of the review (between 0 and 5).
+- **Response:** JSON array containing details of all reviews for the product and pagination information.
+  - `count` (integer): The total number of products available.
+  - `next` (string): The next pagination link.
+  - `previous` (string): The previous pagination link.
+  - `results` (array): JSON object containing product details.
+    - `id` (uuid): The unique identifier of the review.
+    - `description` (string): The description of the review.
+    - `grade` (integer): The rating of the review (between 0 and 5).
+    - `date_created` (string): The date the product was created
+    - `last_updated` (string): The date the product was last updated
 
 #### Create Product Review
 
@@ -153,6 +171,8 @@ This is a Django backend for a simple e-commerce platform. It provides APIs for 
   - `description` (string): The description of the review.
   - `grade` (integer): The rating of the review (between 0 and 5).
 - **Response:** JSON object containing the details of the created review.
-  - `id` (integer): The unique identifier of the review.
+  - `id` (uuid): The unique identifier of the review.
   - `description` (string): The description of the review.
   - `grade` (integer): The rating of the review (between 0 and 5).
+  - `date_created` (string): The date the product was created
+  - `last_updated` (string): The date the product was last updated
