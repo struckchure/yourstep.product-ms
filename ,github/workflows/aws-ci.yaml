@@ -1,0 +1,40 @@
+name: AWS CI
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: docker build -t ys.pms:latest .
+
+  test:
+    runs-on: self-hosted
+    needs:
+      - build
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run django test
+        run: docker run ys.pms:latest python manage.py test
+
+  deploy:
+    runs-on: self-hosted
+    needs:
+      - build
+      - test
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Start django on gunicorn
+        run: docker run -p 80:8000 ys.pms:latest
