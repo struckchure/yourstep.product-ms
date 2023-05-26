@@ -5,14 +5,13 @@ on:
     branches:
       - main
 
-env:
-  SECRET_KEY: ${{ secrets.SECRET_KEY }}
-  DEBUG: ${{ secrets.DEBUG }}
-  ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
-
 jobs:
   build:
     runs-on: self-hosted
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      DEBUG: ${{ secrets.DEBUG }}
+      ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
 
     steps:
       - uses: actions/checkout@v2
