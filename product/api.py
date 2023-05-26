@@ -1,9 +1,8 @@
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
-from product.models import Product
 from product.service import ProductService, ReviewService
 
 
@@ -42,7 +41,7 @@ class GetUpdateDeleteProductAPI(GenericAPIView):
 
 
 class CreateReviewAPI(GenericAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get(self, _, product_id):
         return self.get_paginated_response(
