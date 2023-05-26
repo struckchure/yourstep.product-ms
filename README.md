@@ -106,12 +106,9 @@ This is a Django backend for a simple e-commerce platform. It provides APIs for 
   - `price` (float): The price of the product.
 - **Response:** JSON object containing the details of the created product.
   - `id` (integer): The unique identifier of the product.
-  - `title` (string):
-
-The title of the product.
-
-- `description` (string): The description of the product.
-- `price` (float): The price of the product.
+  - `title` (string): The title of the product.
+  - `description` (string): The description of the product.
+  - `price` (float): The price of the product.
 
 #### Update Product
 
