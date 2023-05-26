@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 
-from product.models import Product
+from product.models import Product, Review
 from product.serializers import ProductSerializer, ReviewSerializer
 
 
@@ -58,3 +58,9 @@ class ReviewService:
         create_review_serializer.save()
 
         return create_review_serializer.data
+
+    @staticmethod
+    def list_reviews(product_id, paginate_queryset):
+        review_query = Review.objects.filter(product__id=product_id)
+
+        return ReviewSerializer(paginate_queryset(review_query), many=True).data
