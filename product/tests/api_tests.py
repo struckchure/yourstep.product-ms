@@ -139,4 +139,4 @@ class ReviewAPITestCase(APITestCase):
 
         self.assertEqual(response.data["description"], review_data["description"])
         self.assertEqual(response.data["grade"], review_data["grade"])
-        self.assertEqual(response.data["product"], product_id)
+        self.assertEqual(str(response.data["product"]), product_id)

@@ -61,7 +61,7 @@ class ReviewTestCase(TestCase):
 
     def test_can_create_reviews(self):
         product = Product.objects.first()
-        review = Review.objects.first()
+        review = Review.objects.order_by("date_created").first()
 
         self.assertEqual(review.product, product)
         self.assertEqual(review.description, "Now i don't know what to say")
