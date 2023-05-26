@@ -43,4 +43,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Start django on gunicorn
-        run: docker run -p 80:8000 ys.pms:latest
+        run: docker run -d -p 80:8000 ys.pms:latest
